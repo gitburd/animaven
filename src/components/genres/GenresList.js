@@ -23,7 +23,7 @@ const GenresList = () => {
     return (
         <div id="genres">
             <h1 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Genres</h1>
-            <div style={listStyle}>
+            <div className='my-grid'>
                 {
                     currentGenres && currentGenres.map(g=>(
                         <Link to={`/genre/${g}`} className='btn btn-dark btn-sm my-1'>
@@ -43,10 +43,6 @@ const GenresList = () => {
     )
 }
 
-const listStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gridGap: '1.25rem'
-  };  
+
 
 export default GenresList

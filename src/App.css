@@ -342,6 +342,11 @@ button {
   background-color:hsla(0, 100%, 100%, 0.25);
 }
 
+.my-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.25rem;
+}
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hide-sm {
@@ -380,8 +385,15 @@ button {
 
   #genres{
     padding:10px;
-    margin:20px auto;
+    margin-top:20px;
+    margin-bottom:40px;
     width:100%;
     background-color:hsla(0, 100%, 100%, 0.25);
+  }
+
+  .my-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.25rem;
   }
 }
