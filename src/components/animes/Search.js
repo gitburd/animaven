@@ -3,7 +3,7 @@ import KitsuContext from '../../context/kitsu/kitsuContext'
 
 const Search = () => {
     const kitsuContext = useContext(KitsuContext)
-    const {animes, searchAnimes, clearAnimes} = kitsuContext
+    const {searchAnimes} = kitsuContext
     
     const [text,setText] = useState('')
 
@@ -34,8 +34,6 @@ const Search = () => {
                     className="btn btn-dark btn-block"
                 />
             </form>
-            {/* { animes.length > 0 && <button className="btn light-btn btn-block" onClick={clearAnimes} >Clear</button> } */}
-            
         </div>
     )
 }

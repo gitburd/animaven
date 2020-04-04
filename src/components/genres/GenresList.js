@@ -23,7 +23,7 @@ const GenresList = () => {
     return (
         <div id="genres">
             <h1 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Genres</h1>
-            <div className='my-grid'>
+            <div className='genre-grid'>
                 {
                     currentGenres && currentGenres.map(g=>(
                         <Link to={`/genre/${g}`} className='btn btn-dark btn-sm my-1'>

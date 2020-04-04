@@ -12,7 +12,7 @@ const Animes = () => {
         return<Spinner/>
     } else {
         return (
-            <div style={animeStyle}>
+            <div className='anime-grid'>
                 {animes.map(anime => (
                  <AnimeItem
                     key={anime.id}
@@ -23,12 +23,5 @@ const Animes = () => {
         )
     }
 }
-
-const animeStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridGap: '1rem',
-    color:'rgba(27, 24, 38, 1)'
-  };  
-
+ 
 export default Animes
