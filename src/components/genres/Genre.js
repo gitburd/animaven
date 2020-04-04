@@ -17,7 +17,7 @@ const Genre = ({match}) => {
     return (
         <div>
             <h1 className="bold-header-text text-dark">{match.params.name}</h1>
-            <div style={animeStyle}>
+            <div className='anime-grid'>
                 {genreAnimes && genreAnimes.map(anime =>
                     <AnimeItem
                         key={anime.id}
@@ -30,11 +30,5 @@ const Genre = ({match}) => {
     )
 
 }
-const animeStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridGap: '1rem',
-    color:'rgba(27, 24, 38, 1)'
-  }; 
 
 export default Genre
