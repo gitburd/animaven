@@ -17,7 +17,7 @@ const KitsuState = props => {
         anime:{},
         genres:[],
         genreAnimes:[],
-        genresList:['Action', 'Adventure', 'Anime Influenced', 'Cars', 'Comedy', 'Cooking', 'Crime', 'Dementia', 'Demons', 'Documentary', 'Doujinshi', 'Drama', 'Ecchi', 'Family', 'Fantasy', 'Food', 'Friendship', 'Game', 'Gender', 'Gore', 'Harem', 'Hentai', 'Historical', 'Horror', 'Isekai', 'Kids', 'Law', 'Magic', 'Mahou Shoujo', 'Mahou Shounen', 'Martial Arts', 'Mature', 'Mecha', 'Medical', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Political', 'Psychological', 'Racing', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Shoujo Ai', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Supernatural', 'Super Power', 'Thriller', 'Tokusatsu', 'Tragedy', 'Vampire', 'Workplace', 'Youth', 'Zombies'],
+        genresList:['Action', 'Adventure', 'Anime Influenced', 'Cars', 'Comedy', 'Cooking', 'Crime', 'Dementia', 'Demons', 'Documentary', 'Doujinshi', 'Drama', 'Ecchi', 'Family', 'Fantasy', 'Food', 'Friendship', 'Game', 'Gender', 'Gore', 'Harem', 'Historical', 'Horror', 'Isekai', 'Kids', 'Law', 'Magic', 'Mahou Shoujo', 'Mahou Shounen', 'Martial Arts', 'Mature', 'Mecha', 'Medical', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Political', 'Psychological', 'Racing', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Shoujo Ai', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Supernatural', 'Super Power', 'Thriller', 'Tokusatsu', 'Tragedy', 'Vampire', 'Workplace', 'Youth', 'Zombies'],
         loading: false
     }
 
