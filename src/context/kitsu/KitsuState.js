@@ -1,4 +1,5 @@
 import React, {useReducer} from 'react'
+import axios from 'axios'
 import KitsuContext from './kitsuContext'
 import KitsuReducer from './kitsuReducer'
 import {
@@ -40,10 +41,12 @@ const KitsuState = props => {
     
     const getAnime = (id) => {
         setLoading();
-        let proxyUrl = "https://cors-anywhere.herokuapp.com/"
+            // let proxyUrl = "https://cors-anywhere.herokuapp.com/"
+        
+        let proxyUrl = "https://afternoon-castle-81655.herokuapp.com/"
         let targetUrl = `https://kitsu.io/api/edge/anime/${id}`
         
-        fetch(proxyUrl + targetUrl)
+        fetch(proxyUrl + targetUrl, {headers: {'Origin': 'https://kitsu.io/api/edge/anime/${id}'}})
         .then(res => res.json())
         .then(res => dispatch({
             type:GET_ANIME,
@@ -68,8 +71,16 @@ const KitsuState = props => {
 
     const getGenreAnimes = (genre) => {
         setLoading();
-        let proxyUrl = "https://cors-anywhere.herokuapp.com/"
+        // let proxyUrl = "https://cors-anywhere.herokuapp.com/"
+        let proxyUrl = "https://afternoon-castle-81655.herokuapp.com/"
         let targetUrl = `https://kitsu.io/api/edge/anime?filter[genres]=${genre}`
+        
+        // axios({
+        //     method: 'get',
+        //     url: proxyUrl+targetUrl
+        //     ,
+        //     headers: {'Origin': targetUrl}
+        // })
         
         fetch(proxyUrl + targetUrl)
         .then(res => res.json())
