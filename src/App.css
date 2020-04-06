@@ -323,7 +323,6 @@ button {
   padding:10px;
   color:var(--dark-color);
   background-color:hsla(0, 100%, 100%, 0.25);
-  width:100%;
 }
 
 .pagination li:hover {
