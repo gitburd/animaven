@@ -18,7 +18,7 @@ const Search = () => {
     }
 
     return (
-        <div style={{margin:'40px'}}>
+        <div style={{margin:'20px 40px'}}>
             <div style={{width:'50%'}}>
                 <input 
                     type="text" 
