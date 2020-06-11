@@ -8,15 +8,19 @@ const Pagination = ({genresPerPage, totalGenres, paginate, currentPage}) => {
     }
 
     return (
-        <ul className='pagination'>
-           {pageNumbers.map(number => (
-               <li key={number}>
-                    <h3 className={number === currentPage ? 'active':''} onClick={()=> paginate(number)}>
-                      {number}
-                    </h3> 
-               </li>
-           ))} 
-        </ul>
+        <div style={{ paddingLeft: '30px'}}>
+            <ul className='pagination bold-header-text '>
+                <li>{' '}</li>
+                {pageNumbers.map(number => (
+                    <li key={number}>
+                            <h2 className={number === currentPage ? 'active':''} onClick={()=> paginate(number)}>
+                            {number}
+                            </h2> 
+                    </li>
+                ))} 
+            </ul>
+
+        </div>     
     )
 }
 

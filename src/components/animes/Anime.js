@@ -26,7 +26,7 @@ const Anime = ({match}) => {
                 Back To Search
             </Link>
 
-            <div className='shadow card grid-2'>
+            <div className='shadow card grid-2' style={{margin:'40px'}}>
                 <div className='all-center'>
                     {
                         attributes &&
@@ -112,12 +112,12 @@ const Anime = ({match}) => {
                
             </div> 
 
-            <div style={{float:'left', display:'block'}}>
-                <h2 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Genres</h2>
+            <div style={{float:'left', display:'block', margin:'40px'}}>
+                <h2 className='bold-header-text text-light' style={{textDecoration:'underline'}}>Genres</h2>
 
                 
                 {genres && genres.map(gen=>(
-                    <Link to={`/genre/${gen.attributes.name}`} className='btn btn-dark btn-sm my-1'>
+                    <Link to={`/genre/${gen.attributes.name}`} className='btn btn-dark btn-sm my-1' style={{margin:'10px'}}>
                         <h3>{gen.attributes.name}</h3> 
                     </Link>
                 ))}

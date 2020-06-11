@@ -1,11 +1,11 @@
 import React, { CFragment, Fragment } from 'react'
-import spinner from './spinner.gif'
+import preload from './preload.gif'
 
 
 const Spinner = () => {
     return (
         <Fragment>
-            <img src={spinner} alt="loading..." style={{width:'200px', margin:'auto', display:'block'}}/>
+            <img src={preload} alt="loading..." style={{width:'100px', margin:'20px auto', display:'block'}}/>
         </Fragment>
     )
 }

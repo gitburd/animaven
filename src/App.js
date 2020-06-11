@@ -16,21 +16,16 @@ function App() {
   return (
     <KitsuState>
       <Router>
+      <Navbar/>
         <div className="App" >
-        <Navbar/>
-        <img className='back' src={back}/>
-        
-          <div className="container" style={{ backgroundColor: 'transparent'}}>
-            <Switch>
-              <Route exact path='/'  component={Home} />
-              <Route exact path='/about' component={About} />
-              <Route exact path='/anime/:id' component={Anime}/>
-              <Route exact path='/genre/:name' component={Genre}/>
-              <Route component={NotFound}/>
-            </Switch>
-          </div>
+          <Switch>
+            <Route exact path='/'  component={Home} />
+            <Route exact path='/about' component={About} />
+            <Route exact path='/anime/:id' component={Anime}/>
+            <Route exact path='/genre/:name' component={Genre}/>
+            <Route component={NotFound}/>
+          </Switch>
         </div>
-
       </Router>
 
     </KitsuState>

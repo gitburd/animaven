@@ -12,16 +12,23 @@
   padding: 0;
 }
 
+
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   color:#fff;
+  background: url('./img/bg4.png') no-repeat;
+  background-size: cover;
+  background-color: var(--dark-color);
+  /* min-height: 100%; */
 }
+
 .bold-header-text{
   font-family: 'Baloo 2', Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
-
 
 a {
   color: var(--danger-color);
@@ -48,6 +55,11 @@ ul {
 }
 .App {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin:30px auto;
 }
 
 /* Utilities */
@@ -87,12 +99,8 @@ ul {
 .text-dark-back{
   background-color:hsla(270, 92%, 15%, 0.9);
 }
-.text-success {
-  color: var(--success-color);
-}
-
-.text-danger {
-  color: var(--danger-color);
+.text-light {
+  color: var(--light-color);
 }
 
 .text-center {
@@ -320,9 +328,9 @@ button {
 
 .pagination li{
   float:left;
-  padding:10px;
+  /* margin-left: 20px; */
+  padding:9px 13px;
   color:var(--dark-color);
-  background-color:hsla(0, 100%, 100%, 0.25);
 }
 
 .pagination li:hover {
@@ -335,12 +343,14 @@ button {
   text-decoration: underline;
 }
 
+.my-1{
+  width:150px;
+}
+
 #genres{
-  padding:10px;
-  margin-top:150px;
-  margin-bottom: 0;
+  padding:20px;
   width:100%;
-  background-color:hsla(0, 100%, 100%, 0.25);
+  background-color:hsla(0, 100%, 100%, 0.7);
 }
 
 .anime-grid{
@@ -351,10 +361,16 @@ button {
 }
 
 .genre-grid{
+  clear:both;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.25rem;
 }
+
+.search-btn{
+  float: right;
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hide-sm {
@@ -392,16 +408,16 @@ button {
   }
 
   #genres{
+    clear:both;
     padding:10px;
-    margin-top:20px;
-    width:100%;
-    background-color:hsla(0, 100%, 100%, 0.25);
+    margin:20px;
+    background-color:hsla(0, 100%, 100%, 0.7);
   }
 
   .anime-grid{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: 1rem;
+    grid-gap: 1.5rem;
     color:rgba(27, 24, 38, 1);
   }
 

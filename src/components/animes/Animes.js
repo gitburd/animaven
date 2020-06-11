@@ -12,7 +12,7 @@ const Animes = () => {
         return<Spinner/>
     } else {
         return (
-            <div className='anime-grid'>
+            <div className='anime-grid' style={{margin:'20px 40px'}}>
                 {animes.map(anime => (
                  <AnimeItem
                     key={anime.id}

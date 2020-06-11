@@ -15,8 +15,8 @@ const Genre = ({match}) => {
     if(loading) return <Spinner/>
 
     return (
-        <div>
-            <h1 className="bold-header-text text-dark">{match.params.name}</h1>
+        <div style={{margin:'20px 40px'}}>
+            <h1 className="bold-header-text text-light">{match.params.name}</h1>
             <div className='anime-grid'>
                 {genreAnimes && genreAnimes.map(anime =>
                     <AnimeItem

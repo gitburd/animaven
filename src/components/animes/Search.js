@@ -18,22 +18,29 @@ const Search = () => {
     }
 
     return (
-        <div>
-            <form  onSubmit={onSubmit} className="form">
+        <div style={{margin:'40px'}}>
+            <div style={{width:'50%'}}>
                 <input 
-                type="text" 
-                name="text" 
-                placeholder="Search titles..."
-                value={text}
-                required
-                onChange={onChange}
+                    type="text" 
+                    name="text" 
+                    placeholder="Search titles..."
+                    value={text}
+                    required
+                    onChange={onChange}
                 />
-                <input 
+            </div>
+            <div style={{width:"130px",marginLeft: "52%", marginTop: "-56px"}}>
+                <a 
+                    href="#" 
+                    data-role="button" 
+                    data-mini="true"
                     type="submit" 
                     value="Search" 
-                    className="btn btn-dark btn-block"
-                />
-            </form>
+                    className="btn btn-dark"
+                    onClick={onSubmit}
+
+                >Search</a>
+            </div>             
         </div>
     )
 }
