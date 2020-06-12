@@ -13,7 +13,7 @@ const Search = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        searchAnimes(text);
+        searchAnimes(text,0);
         setText('')
     }
 

@@ -8,7 +8,7 @@ const Genre = ({match}) => {
     const { getGenreAnimes, genreAnimes, loading } = kitsuContext
 
     useEffect(( )=> {
-        getGenreAnimes(match.params.name)
+        getGenreAnimes(match.params.name,0)
         //eslint-disable-next-line  
     }, [])
     

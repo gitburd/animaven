@@ -24,11 +24,11 @@ const KitsuState = props => {
 
     const [state, dispatch] = useReducer(KitsuReducer, initialState)
 
-    const searchAnimes = (text) => {
+    const searchAnimes = (text,offset) => {
         setLoading();
     
         let proxyUrl = "https://cors-anywhere.herokuapp.com/"
-        let targetUrl = `https://kitsu.io/api/edge/anime?filter[text]=${text}`
+        let targetUrl = `https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=${offset}&filter[text]=${text}`
         
         fetch(proxyUrl + targetUrl)
         .then(res => res.json())
@@ -69,11 +69,11 @@ const KitsuState = props => {
         .catch(function(e) {console.log(e) })
     }
 
-    const getGenreAnimes = (genre) => {
+    const getGenreAnimes = (genre,offset) => {
         setLoading();
         // let proxyUrl = "https://cors-anywhere.herokuapp.com/"
         let proxyUrl = "https://afternoon-castle-81655.herokuapp.com/"
-        let targetUrl = `https://kitsu.io/api/edge/anime?filter[genres]=${genre}`
+        let targetUrl = `https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=${offset}&filter[genres]=${genre}`
         
         // axios({
         //     method: 'get',
