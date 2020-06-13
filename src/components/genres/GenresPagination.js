@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Pagination = ({genresPerPage, totalGenres, paginate, currentPage}) => {
+const GenresPagination = ({genresPerPage, totalGenres, paginate, currentPage}) => {
     const pageNumbers =[];
     
     for(let i =1; i <= Math.ceil(totalGenres/genresPerPage); i++){
@@ -13,9 +13,9 @@ const Pagination = ({genresPerPage, totalGenres, paginate, currentPage}) => {
                 <li>{' '}</li>
                 {pageNumbers.map(number => (
                     <li key={number}>
-                            <h2 className={number === currentPage ? 'active':''} onClick={()=> paginate(number)}>
-                            {number}
-                            </h2> 
+                        <h2 className={number === currentPage ? 'active':''} onClick={()=> paginate(number)}>
+                        {number}
+                        </h2> 
                     </li>
                 ))} 
             </ul>
@@ -24,4 +24,4 @@ const Pagination = ({genresPerPage, totalGenres, paginate, currentPage}) => {
     )
 }
 
-export default Pagination
+export default GenresPagination

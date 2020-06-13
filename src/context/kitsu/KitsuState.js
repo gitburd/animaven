@@ -1,5 +1,4 @@
 import React, {useReducer} from 'react'
-import axios from 'axios'
 import KitsuContext from './kitsuContext'
 import KitsuReducer from './kitsuReducer'
 import {
@@ -18,7 +17,8 @@ const KitsuState = props => {
         anime:{},
         genres:[],
         genreAnimes:[],
-        genresList:['Action', 'Adventure', 'Anime Influenced', 'Cars', 'Comedy', 'Cooking', 'Crime', 'Dementia', 'Demons', 'Documentary', 'Doujinshi', 'Drama', 'Ecchi', 'Family', 'Fantasy', 'Food', 'Friendship', 'Game', 'Gender', 'Gore', 'Harem', 'Historical', 'Horror', 'Isekai', 'Kids', 'Law', 'Magic', 'Mahou Shoujo', 'Mahou Shounen', 'Martial Arts', 'Mature', 'Mecha', 'Medical', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Political', 'Psychological', 'Racing', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Shoujo Ai', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Supernatural', 'Super Power', 'Thriller', 'Tokusatsu', 'Tragedy', 'Vampire', 'Workplace', 'Youth', 'Zombies'],
+        genresList:['Action', 'Adventure', 'Anime Influenced', 'Cars', 'Comedy', 'Crime', 'Dementia', 'Demons', 'Documentary', 'Doujinshi', 'Drama', 'Ecchi', 'Family', 'Fantasy', 'Food', 'Friendship', 'Game', 'Gender', 'Gore', 'Harem', 'Historical', 'Horror', 'Isekai', 'Kids', 'Law', 'Magic', 'Mahou Shoujo', 'Mahou Shounen', 'Martial Arts', 'Mature', 'Mecha', 'Medical', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Political', 'Psychological', 'Racing', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Shoujo Ai', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Supernatural', 'Super Power', 'Thriller', 'Tragedy', 'Vampire', 'Workplace', 'Youth', 'Zombies'],
+        genreLimits:{'Action': 10, 'Adventure':10, 'Anime Influenced':10, 'Cars':5, 'Comedy':10, 'Crime':3, 'Dementia':10, 'Demons':10, 'Documentary':1, 'Doujinshi':8, 'Drama':10, 'Ecchi':10, 'Family':3, 'Fantasy':10, 'Food':2, 'Friendship':10, 'Game':10, 'Gender':1, 'Gore':2, 'Harem':10, 'Historical':10, 'Horror':10, 'Isekai':1, 'Kids':10, 'Law':1, 'Magic':10, 'Mahou Shoujo':10, 'Mahou Shounen':1, 'Martial Arts':10, 'Mature':1, 'Mecha':10, 'Medical':1, 'Military':10, 'Music':10, 'Mystery':10, 'Parody':10, 'Police':10, 'Political':1, 'Psychological':10, 'Racing':3, 'Romance':10, 'Samurai':10, 'School':10, 'Sci-Fi':10, 'Shoujo Ai':4, 'Shounen Ai':5, 'Slice of Life':10, 'Space':10, 'Sports':10, 'Supernatural':10, 'Super Power':10, 'Thriller':6, 'Tragedy':1, 'Vampire':7, 'Workplace':2, 'Youth':1, 'Zombies':3},
         loading: false
     }
 
@@ -32,10 +32,17 @@ const KitsuState = props => {
         
         fetch(proxyUrl + targetUrl)
         .then(res => res.json())
-        .then(res => dispatch({
+        .then(res => {
+            console.log(res)
+            dispatch({
             type:SEARCH_ANIMES,
-            payload: res.data
-        }))
+            payload: {
+                data: res.data,
+                search:text
+            }
+        })
+        }
+            )
         .catch(function(e) {console.log(e) })
       }
     
@@ -105,6 +112,9 @@ const KitsuState = props => {
             genresList:state.genresList,
             relatedAnimes: state.relatedAnimes,
             genreAnimes:state.genreAnimes,
+            search:state.search,
+            genreLimits:state.genreLimits,
+            resultsError:state.resultsError,
             searchAnimes,
             clearAnimes,
             getAnime,

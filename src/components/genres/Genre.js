@@ -1,23 +1,36 @@
-import React, {useContext,useEffect} from 'react'
+import React, {useContext,useEffect, useState} from 'react'
 import AnimeItem from '../animes/AnimeItem'
 import KitsuContext from '../../context/kitsu/kitsuContext'
 import Spinner from '../layout/Spinner'
+import AnimesPagination from '../animes/AnimesPagination'
 
 const Genre = ({match}) => {
     const kitsuContext = useContext(KitsuContext)
     const { getGenreAnimes, genreAnimes, loading } = kitsuContext
+    // const {animes, loading, search, searchAnimes} = kitsuContext
+    const [currentPage, setCurrentPage] = useState(1)
+    
+    const paginate = (pageNumber) =>  {
+        setCurrentPage(pageNumber)
+    }
 
     useEffect(( )=> {
-        getGenreAnimes(match.params.name,0)
+        const offset = (currentPage - 1) * 20 
+        getGenreAnimes(match.params.name,offset)
         //eslint-disable-next-line  
-    }, [])
+    }, [currentPage])
     
     if(loading) return <Spinner/>
 
     return (
-        <div style={{margin:'20px 40px'}}>
-            <h1 className="bold-header-text text-light">{match.params.name}</h1>
-            <div className='anime-grid'>
+        <div >
+            <AnimesPagination
+                paginate={paginate}
+                currentPage={currentPage}
+                genre={match.params.name}
+            />
+            
+            <div className='anime-grid' style={{margin:'40px'}}>
                 {genreAnimes && genreAnimes.map(anime =>
                     <AnimeItem
                         key={anime.id}
@@ -25,10 +38,14 @@ const Genre = ({match}) => {
                     /> 
                 )}
             </div>
-        </div>
-        
-    )
 
+            <AnimesPagination
+                paginate={paginate}
+                currentPage={currentPage}
+                genre={match.params.name}
+            />
+        </div>
+    )
 }
 
 export default Genre

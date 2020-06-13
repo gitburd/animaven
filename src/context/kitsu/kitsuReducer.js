@@ -10,10 +10,22 @@ import {
 export default (state, action) => {
     switch(action.type){
         case SEARCH_ANIMES:
-            return{
-                ...state,
-                animes:action.payload,
-                loading:false
+            if(action.payload.data.length === 0 ){
+                return{
+                    ...state,
+                    resultsError:'No results found',
+                    animes:[],
+                    search:'',
+                    loading:false,
+                }
+            } else {
+                return{
+                    ...state,
+                    animes:action.payload.data,
+                    search:action.payload.search,
+                    loading:false,
+                    resultsError: null
+                }
             }
         case GET_ANIME:
             return{

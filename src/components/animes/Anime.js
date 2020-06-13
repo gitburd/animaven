@@ -117,7 +117,7 @@ const Anime = ({match}) => {
 
                 
                 {genres && genres.map(gen=>(
-                    <Link to={`/genre/${gen.attributes.name}`} className='btn btn-dark btn-sm my-1' style={{margin:'10px'}}>
+                    <Link key={gen.attributes.name} to={`/genre/${gen.attributes.name}`} className='btn btn-dark btn-sm my-1' style={{margin:'10px'}}>
                         <h3>{gen.attributes.name}</h3> 
                     </Link>
                 ))}
