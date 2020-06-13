@@ -8,7 +8,11 @@ const Search = () => {
     const [text,setText] = useState('')
 
     const onChange = e => {
-     setText(e.target.value)
+        if(e.keyCode === 13) {
+            searchAnimes(text,0);
+        } else {
+            setText(e.target.value)
+        }
     }
 
     const onSubmit = e => {
@@ -27,6 +31,7 @@ const Search = () => {
                     value={text}
                     required
                     onChange={onChange}
+                    onKeyUp={onChange}
                 />
             </div>
             <div style={{width:"130px",marginLeft: "52%", marginTop: "-56px"}}>
