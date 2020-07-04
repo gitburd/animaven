@@ -14,10 +14,6 @@ const Anime = ({match}) => {
         getGenres(match.params.id)
         //eslint-disable-next-line  
     }, [])
-    
-    const {
-       
-    } = anime
 
     if(loading) return <Spinner/>
     return (
@@ -32,8 +28,7 @@ const Anime = ({match}) => {
                         attributes &&
                         <img
                             src={attributes.posterImage.large}
-                            // className='round-img'
-                            alt=''
+                            alt={attributes.canonicalTitle}
                             style={{ width: '250px' }}
                             />
                     }
@@ -108,22 +103,17 @@ const Anime = ({match}) => {
             <div className='shadow card text-center'>
                 <div className='badge badge-danger'>Favorites: {attributes  && attributes.favoritesCount }</div>
                 <div className='badge badge-success'>Popularity Rank: {attributes  && attributes.popularityRank }</div>
-                <div className='badge badge-dark'>Average Rating: {attributes  && attributes.averageRating }</div>
-               
+                <div className='badge badge-dark'>Average Rating: {attributes  && attributes.averageRating }</div>      
             </div> 
 
             <div style={{float:'left', display:'block', margin:'40px'}}>
-                <h2 className='bold-header-text text-light' style={{textDecoration:'underline'}}>Genres</h2>
-
-                
+                <h2 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Genres</h2>   
                 {genres && genres.map(gen=>(
                     <Link key={gen.attributes.name} to={`/genre/${gen.attributes.name}`} className='btn btn-dark btn-sm my-1' style={{margin:'10px'}}>
                         <h3>{gen.attributes.name}</h3> 
                     </Link>
                 ))}
-            
             </div>
-
         </Fragment>
     )
 }

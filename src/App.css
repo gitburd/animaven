@@ -55,7 +55,7 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin:30px auto;
+  margin:0 auto;
 }
 
 /* Utilities */
@@ -82,6 +82,8 @@ ul {
 }
 .text-dark-back{
   background-color:hsla(270, 92%, 15%, 0.9);
+  color: #EAE6F4;
+  text-align: center;
 }
 .text-light {
   color: var(--light-color);
@@ -204,7 +206,7 @@ textarea {
   font-size: 1.2rem;
   border: 1px solid #ccc;
 }
-/* Navbar */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -213,7 +215,6 @@ textarea {
   z-index: 1;
   width: 100%;
   opacity: 0.9;
-  margin-bottom: 1rem;
 }
 .navbar ul {
   display: flex;

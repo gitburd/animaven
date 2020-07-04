@@ -1,7 +1,6 @@
 import React, {useContext, useState} from 'react'
 import {Link} from "react-router-dom"
 import KitsuContext from '../../context/kitsu/kitsuContext'
-// import GenresPagination from './GenresPagination'
 import GenresPagination from './GenresPagination'
 
 const GenresList = () => {
@@ -27,18 +26,14 @@ const GenresList = () => {
                 currentPage={currentPage}
             />
             <div className='genre-grid'>
-                {
-                    currentGenres && currentGenres.map(g=>(
-                        <Link key={g} to={`/genre/${g}`} className='btn btn-dark btn-sm my-1'>
-                            <h3>{g}</h3> 
-                       </Link>
-                    ))
-                }
+                { currentGenres && currentGenres.map(g=>(
+                    <Link key={g} to={`/genre/${g}`} className='btn btn-dark btn-sm my-1'>
+                        <h3>{g}</h3> 
+                    </Link>
+                ))}
             </div>
         </div>
     )
 }
-
-
 
 export default GenresList

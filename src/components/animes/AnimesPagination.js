@@ -3,19 +3,16 @@ import KitsuContext from '../../context/kitsu/kitsuContext'
 
 
 const AnimesPagination = ({paginate, currentPage, search, genre}) => {
-    const pageNumbers = genre ? [] : [1,2,3,4,5,6,7,8,9,10];
     const kitsuContext = useContext(KitsuContext);
-    const {genreLimits} = kitsuContext;
-
-    if(genre){
-        console.log(genreLimits, genre, genreLimits["Zombies"])
-        for(let i =1; i <= genreLimits[genre]; i++){
-            pageNumbers.push(i);
-        }
+    const {dataCount} = kitsuContext;
+    const pageNumbers = []; 
+    
+    for(let i = 1, count = dataCount; count >= 0 && i <= 20; i++, count-=15){
+        pageNumbers.push(i);
     }
     
     return (
-        <div style={{ marginLeft: '40px', padding:'10px', float:'left', backgroundColor:'hsla(270, 92%, 15%, 0.9)'}}>
+        <div style={{ margin:'40px', padding:'10px', float:'left', backgroundColor:'hsla(270, 92%, 15%, 0.9)'}}>
             {search &&  
                 <h1 className="bold-header-text text-light " style={{ float:'left'}}>
                     " {search} "
@@ -26,9 +23,7 @@ const AnimesPagination = ({paginate, currentPage, search, genre}) => {
                      {genre} 
                 </h1>
             }
-
             
-
             <ul className='pagination bold-header-text' style={{float:'left'}}>
                 <li>{' '}</li>
                 {pageNumbers.map(number => (

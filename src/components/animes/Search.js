@@ -4,7 +4,6 @@ import KitsuContext from '../../context/kitsu/kitsuContext'
 const Search = () => {
     const kitsuContext = useContext(KitsuContext)
     const {searchAnimes} = kitsuContext
-    
     const [text,setText] = useState('')
 
     const onChange = e => {

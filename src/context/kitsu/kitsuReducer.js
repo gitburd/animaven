@@ -23,6 +23,7 @@ export default (state, action) => {
                     ...state,
                     animes:action.payload.data,
                     search:action.payload.search,
+                    dataCount:action.payload.dataCount,
                     loading:false,
                     resultsError: null
                 }
@@ -49,6 +50,7 @@ export default (state, action) => {
         return{
             ...state,
             genreAnimes: action.payload,
+            dataCount:action.dataCount,
             loading:false
         }     
         case SET_LOADING:
