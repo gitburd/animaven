@@ -107,7 +107,6 @@ const Anime = ({match}) => {
             </div> 
 
             <div style={{float:'left', display:'block', margin:'40px'}}>
-                <h2 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Genres</h2>   
                 {genres && genres.map(gen=>(
                     <Link key={gen.attributes.name} to={`/genre/${gen.attributes.name}`} className='btn btn-dark btn-sm my-1' style={{margin:'10px'}}>
                         <h3>{gen.attributes.name}</h3> 
