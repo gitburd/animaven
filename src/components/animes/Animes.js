@@ -6,12 +6,17 @@ import AnimesPagination from './AnimesPagination'
 
 const Animes = () => {
     const kitsuContext = useContext(KitsuContext)
-    const {animes, loading, search, genre, searchAnimes, genreAnimes, resultsError} = kitsuContext
+    const {animes, loading, search, genre, searchAnimes, getGenreAnimes, genreAnimes, resultsError} = kitsuContext
     const [currentPage, setCurrentPage] = useState(1)
     const paginate = (pageNumber) =>  {
         setCurrentPage(pageNumber)
         const offset = (pageNumber - 1) * 15
-        searchAnimes(search,offset);
+        if(search){
+            searchAnimes(search,offset);
+        }
+        if(genre){
+            getGenreAnimes(genre, offset);
+        }
     }
     const displayAnimes = animes && animes.length > 0 ? animes : genreAnimes;
 

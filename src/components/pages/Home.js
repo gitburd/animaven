@@ -4,7 +4,7 @@ import GenresList from '../genres/GenresList'
 import Search from '../animes/Search'
 import About from './About'
 import KitsuContext from '../../context/kitsu/kitsuContext'
-import WatchList from './WatchList'
+import WatchList from '../watchLIst/WatchList'
 
  const Home = () => {
     const kitsuContext = useContext(KitsuContext)

@@ -14,23 +14,23 @@ const AnimesPagination = ({paginate, currentPage, search, genre}) => {
     return (
         <div className='dark-container'>
             {search &&  
-                <h2 className="bold-header-text text-light float-left">
+                <h3 className="bold-header-text text-light float-left">
                     " {search} "
-                </h2>
+                </h3>
             }
             {genre &&  
-                <h2 className="bold-header-text text-light float-left">
+                <h3 className="bold-header-text text-light float-left">
                      {genre} 
-                </h2>
+                </h3>
             }
             
             <ul className='pagination bold-header-text float-left'>
                 <li>{' '}</li>
                 {pageNumbers.map(number => (
                     <li key={number}>
-                        <h3 className={number === currentPage ? 'active':'text-light'} onClick={()=> paginate(number)}>
+                        <p className={number === currentPage ? 'active':'text-light'} onClick={()=> paginate(number)}>
                         {number}
-                        </h3> 
+                        </p> 
                     </li>
                 ))} 
             </ul>

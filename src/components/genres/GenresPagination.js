@@ -13,9 +13,9 @@ const GenresPagination = ({genresPerPage, totalGenres, paginate, currentPage}) =
                 <li>{' '}</li>
                 {pageNumbers.map(number => (
                     <li key={number}>
-                        <h2 className={number === currentPage ? 'active':''} onClick={()=> paginate(number)}>
+                        <p className={number === currentPage ? 'active':''} onClick={()=> paginate(number)}>
                         {number}
-                        </h2> 
+                        </p> 
                     </li>
                 ))} 
             </ul>

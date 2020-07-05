@@ -22,9 +22,9 @@ const GenresList = () => {
     return (
         <div>
             <div className="light-container">
-            <h1 className='bold-header-text text-dark float-left' style={{textDecoration:'underline', clear:'both'}}>
+            <h2 className='bold-header-text text-dark float-left' style={{textDecoration:'underline', clear:'both'}}>
                 Genres
-            </h1>
+            </h2>
             <GenresPagination 
                 genresPerPage={genresPerPage} 
                 totalGenres={genresList.length}
