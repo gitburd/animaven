@@ -21,7 +21,7 @@ const Search = () => {
     }
 
     return (
-        <div style={{margin:'20px 40px'}}>
+        <div className="light-container" style={{}}>
             <div style={{width:'50%'}}>
                 <input 
                     type="text" 
@@ -46,6 +46,7 @@ const Search = () => {
                 >Search</a>
             </div>             
         </div>
+        // </div>
     )
 }
 

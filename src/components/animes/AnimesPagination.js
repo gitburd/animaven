@@ -7,30 +7,30 @@ const AnimesPagination = ({paginate, currentPage, search, genre}) => {
     const {dataCount} = kitsuContext;
     const pageNumbers = []; 
     
-    for(let i = 1, count = dataCount; count >= 0 && i <= 20; i++, count-=15){
+    for(let i = 1, count = dataCount; count >= 0 && i <= 15; i++, count-=15){
         pageNumbers.push(i);
     }
     
     return (
-        <div style={{ margin:'40px', padding:'10px', float:'left', backgroundColor:'hsla(270, 92%, 15%, 0.9)'}}>
+        <div className='dark-container'>
             {search &&  
-                <h1 className="bold-header-text text-light " style={{ float:'left'}}>
+                <h2 className="bold-header-text text-light float-left">
                     " {search} "
-                </h1>
+                </h2>
             }
             {genre &&  
-                <h1 className="bold-header-text text-light " style={{ float:'left'}}>
+                <h2 className="bold-header-text text-light float-left">
                      {genre} 
-                </h1>
+                </h2>
             }
             
-            <ul className='pagination bold-header-text' style={{float:'left'}}>
+            <ul className='pagination bold-header-text float-left'>
                 <li>{' '}</li>
                 {pageNumbers.map(number => (
                     <li key={number}>
-                        <h2 className={number === currentPage ? 'active':'text-light'} onClick={()=> paginate(number)}>
+                        <h3 className={number === currentPage ? 'active':'text-light'} onClick={()=> paginate(number)}>
                         {number}
-                        </h2> 
+                        </h3> 
                     </li>
                 ))} 
             </ul>

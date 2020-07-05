@@ -23,9 +23,11 @@ export default (state, action) => {
                     ...state,
                     animes:action.payload.data,
                     search:action.payload.search,
+                    genre:null,
                     dataCount:action.payload.dataCount,
                     loading:false,
-                    resultsError: null
+                    resultsError: null,
+                    genreAnimes: []
                 }
             }
         case GET_ANIME:
@@ -50,6 +52,9 @@ export default (state, action) => {
         return{
             ...state,
             genreAnimes: action.payload,
+            genre:action.genre,
+            search:null,
+            animes:[],
             dataCount:action.dataCount,
             loading:false
         }     

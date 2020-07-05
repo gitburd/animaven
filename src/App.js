@@ -20,7 +20,6 @@ function App() {
           <Switch>
             <Route exact path='/'  component={Home} />
             <Route exact path='/anime/:id' component={Anime}/>
-            <Route exact path='/genre/:name' component={Genre}/>
             <Route component={NotFound}/>
           </Switch>
         </div>

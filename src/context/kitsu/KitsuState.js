@@ -48,8 +48,6 @@ const KitsuState = props => {
     
     const getAnime = (id) => {
         setLoading();
-            // let proxyUrl = "https://cors-anywhere.herokuapp.com/"
-        
         let proxyUrl = "https://afternoon-castle-81655.herokuapp.com/"
         let targetUrl = `https://kitsu.io/api/edge/anime/${id}`
         
@@ -77,6 +75,7 @@ const KitsuState = props => {
     }
 
     const getGenreAnimes = (genre,offset) => {
+        console.log('from state', genre)
         setLoading();
         let proxyUrl = "https://afternoon-castle-81655.herokuapp.com/"
         let targetUrl = `https://kitsu.io/api/edge/anime?page[limit]=15&page[offset]=${offset}&filter[genres]=${genre}`
@@ -87,6 +86,7 @@ const KitsuState = props => {
             dispatch({
             type:GET_GENRE_ANIMES,
             dataCount: res.meta.count,
+            genre,
             payload: res.data
         })})
         .catch(function(e) {console.log(e) })
@@ -106,6 +106,7 @@ const KitsuState = props => {
             relatedAnimes: state.relatedAnimes,
             genreAnimes:state.genreAnimes,
             search:state.search,
+            genre:state.genre,
             genreLimits:state.genreLimits,
             resultsError:state.resultsError,
             dataCount:state.dataCount,

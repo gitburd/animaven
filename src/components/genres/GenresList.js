@@ -6,7 +6,7 @@ import GenresPagination from './GenresPagination'
 const GenresList = () => {
     
     const kitsuContext = useContext(KitsuContext)
-    const {genresList} = kitsuContext
+    const {genresList, getGenreAnimes} = kitsuContext
     const [currentPage, setCurrentPage] = useState(1);
     const [genresPerPage, setGenresPerPage] = useState(12);
     const indexOfLastGenre = currentPage * genresPerPage;
@@ -14,9 +14,15 @@ const GenresList = () => {
     const currentGenres = genresList.slice(indexOfFirstGenre,indexOfLastGenre)
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
+
+    const getAnimes = (e,g) => {
+        e.preventDefault()
+        getGenreAnimes(g,0)
+    }
     return (
-        <div id="genres">
-            <h1 className='bold-header-text text-dark' style={{textDecoration:'underline', float:'left'}}>
+        <div>
+            <div className="light-container">
+            <h1 className='bold-header-text text-dark float-left' style={{textDecoration:'underline', clear:'both'}}>
                 Genres
             </h1>
             <GenresPagination 
@@ -27,12 +33,12 @@ const GenresList = () => {
             />
             <div className='genre-grid'>
                 { currentGenres && currentGenres.map(g=>(
-                    <Link key={g} to={`/genre/${g}`} className='btn btn-dark btn-sm my-1'>
-                        <h3>{g}</h3> 
-                    </Link>
+                    <h3 key={g} className='btn btn-dark btn-sm my-1' onClick={(e)=>getAnimes(e,g)}>{g}</h3> 
                 ))}
             </div>
         </div>
+        </div>
+        
     )
 }
 

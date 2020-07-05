@@ -5,13 +5,19 @@ import KitsuContext from '../../context/kitsu/kitsuContext'
 
 const Anime = ({match}) => {
     const kitsuContext = useContext(KitsuContext)
-    const { anime, loading, genres, getAnime, getGenres} = kitsuContext
+    const { anime, loading, genres, getAnime, getGenreAnimes, getGenres} = kitsuContext
     const { attributes } = anime 
+
+    const getAnimes = (e,g) => {
+        e.preventDefault()
+        let offset = 0
+        getGenreAnimes(g,offset)
+    }
 
     useEffect(( )=> {
         
         getAnime(match.params.id)
-        getGenres(match.params.id)
+        // getGenres(match.params.id)
         //eslint-disable-next-line  
     }, [])
 
@@ -108,9 +114,7 @@ const Anime = ({match}) => {
 
             <div style={{float:'left', display:'block', margin:'40px'}}>
                 {genres && genres.map(gen=>(
-                    <Link key={gen.attributes.name} to={`/genre/${gen.attributes.name}`} className='btn btn-dark btn-sm my-1' style={{margin:'10px'}}>
-                        <h3>{gen.attributes.name}</h3> 
-                    </Link>
+                   <h3 key={gen} className='btn btn-dark btn-sm my-1' onClick={(e)=>getAnimes(e,gen)}>{gen}</h3> 
                 ))}
             </div>
         </Fragment>
