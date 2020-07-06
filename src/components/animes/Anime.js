@@ -40,7 +40,12 @@ const Anime = ({match}) => {
                 <Link to='/' className='btn btn-dark'>
                     Back To Search
                 </Link>
-                <button onClick = {(e)=>addToList(e, anime)}>Add to watch List </button>
+                <button 
+                    className='btn btn-light'
+                    onClick = {(e)=>addToList(e, anime)}
+                >
+                    Add to watch List 
+                </button>
                 <div className='shadow card '>
                     <div className='all-center'>
                         {   anime && anime.attributes &&

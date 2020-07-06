@@ -165,6 +165,10 @@ ul {
   color: #333;
   border-radius: 5px;
 }
+
+.btn-light {
+  border: #ccc solid 1px;
+}
 .btn-dark,
 .badge-dark {
   background: var(--dark-color);
@@ -181,10 +185,7 @@ ul {
 .btn:hover {
   opacity: 0.8;
 }
-.bg-light,
-.badge-light {
-  border: #ccc solid 1px;
-}
+
 .round-img {
   border-radius: 80%;
 }
@@ -289,7 +290,7 @@ textarea {
 .right{
   grid-column: 3;
   grid-row: 1;
-  width:30vw;
+  /* width:30vw; */
   margin:0 auto;
 }
 
@@ -304,7 +305,7 @@ textarea {
 .dark-container{
   margin:0; 
   width:100%; 
-  padding:20px; 
+  padding:5px 10px; 
   font-size: 20px;
   float:left; 
   background-color:hsla(270, 92%, 15%, 0.95);
@@ -319,6 +320,7 @@ textarea {
 }
 
 /*media queries */
+
 @media (max-width: 1130px) {
   .anime-grid{
     display: grid;
