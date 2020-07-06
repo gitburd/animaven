@@ -4,7 +4,8 @@ import {
     CLEAR_ANIMES,
     GET_ANIME,
     GET_GENRES,
-    GET_GENRE_ANIMES
+    GET_GENRE_ANIMES,
+    GET_STORAGE
 }from '../types'
 
 export default (state, action) => {
@@ -63,6 +64,10 @@ export default (state, action) => {
                 ...state, 
                 loading: true
             }
+        case GET_STORAGE:
+            return{
+                ...action.payload
+            }    
         default:
             return state
     }

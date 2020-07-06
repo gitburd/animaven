@@ -11,7 +11,7 @@ const GenresList = () => {
     const [genresPerPage, setGenresPerPage] = useState(12);
     const indexOfLastGenre = currentPage * genresPerPage;
     const indexOfFirstGenre = indexOfLastGenre - genresPerPage;
-    const currentGenres = genresList.slice(indexOfFirstGenre,indexOfLastGenre)
+    const currentGenres = genresList ? genresList.slice(indexOfFirstGenre,indexOfLastGenre) : []
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
 
@@ -27,7 +27,7 @@ const GenresList = () => {
             </h2>
             <GenresPagination 
                 genresPerPage={genresPerPage} 
-                totalGenres={genresList.length}
+                totalGenres={genresList && genresList.length}
                 paginate={paginate}
                 currentPage={currentPage}
             />

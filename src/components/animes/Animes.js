@@ -29,41 +29,38 @@ const Animes = () => {
     } else {
         return (
             <>
-            <div>
-                {displayAnimes && displayAnimes.length >0 && (
-                    <AnimesPagination
-                        paginate={paginate}
-                        currentPage={currentPage}
-                        search={search}
-                        genre={genre}
-                    />
-                )}
-            </div>
-            <div>
-                {search && resultsError && (
-                    <h1>No results found.</h1>
-                )}
-            </div>
+                <div>
+                    {search && resultsError && (
+                        <h1>No results found.</h1>
+                    )}
+                </div>
 
-            <div className='anime-grid' style={{margin:'20px 40px', clear:'both'}}>
-                {displayAnimes.map(anime => (
-                 <AnimeItem
-                    key={anime.id}
-                    anime={anime}
-                 />
-                ))}
-            </div>
-
-            <div>
-            {displayAnimes && displayAnimes.length >0 && (
-                    <AnimesPagination
-                        paginate={paginate}
-                        currentPage={currentPage}
-                        search={search}
-                        genre={genre}
-                    />
-                )}
-            </div>
+                <div>
+                    {displayAnimes && displayAnimes.length >0 && (
+                        <div>
+                            <AnimesPagination
+                            paginate={paginate}
+                            currentPage={currentPage}
+                            search={search}
+                            genre={genre}
+                            />
+                            <div className='anime-grid' style={{margin:'20px 40px', clear:'both'}}>
+                                {displayAnimes.map(anime => (
+                                <AnimeItem
+                                    key={anime.id}
+                                    anime={anime}
+                                />
+                                ))}
+                            </div>
+                            <AnimesPagination
+                                paginate={paginate}
+                                currentPage={currentPage}
+                                search={search}
+                                genre={genre}
+                            />
+                        </div>
+                    )}
+                </div>
             </>
         )
     }

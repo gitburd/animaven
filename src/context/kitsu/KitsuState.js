@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react'
+import React, {useReducer, useEffect} from 'react'
 import KitsuContext from './kitsuContext'
 import KitsuReducer from './kitsuReducer'
 import {
@@ -7,7 +7,8 @@ import {
     CLEAR_ANIMES,
     GET_ANIME,
     GET_GENRES,
-    GET_GENRE_ANIMES
+    GET_GENRE_ANIMES,
+    GET_STORAGE
 }from '../types'
 
 const KitsuState = props => {
@@ -96,6 +97,19 @@ const KitsuState = props => {
     
     const setLoading = () => dispatch({ type: SET_LOADING })
 
+    const getStorage = () => {
+        const storage = localStorage.getItem('state')
+        const storagePayload = storage ? JSON.parse(storage) : initialState
+        dispatch({
+          type: GET_STORAGE,
+          payload: storagePayload
+        });
+      }
+    
+    useEffect(() => {
+        localStorage.setItem("state", JSON.stringify(state))
+    })
+
     return <KitsuContext.Provider
         value={{
             animes: state.animes,
@@ -114,7 +128,8 @@ const KitsuState = props => {
             clearAnimes,
             getAnime,
             getGenres,
-            getGenreAnimes
+            getGenreAnimes,
+            getStorage
         }}
     >
         {props.children}
