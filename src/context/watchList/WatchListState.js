@@ -3,7 +3,8 @@ import WatchListContext from './watchListContext'
 import WatchListReducer from './watchListReducer'
 import {
     ADD_LIST_ITEM,
-    GET_STORAGE
+    GET_STORAGE,
+    REMOVE_LIST_ITEM
 }from '../types'
 
 const WatchListState = props => {
@@ -20,8 +21,16 @@ const WatchListState = props => {
         })
     }
 
-    const getStorage = () => {
+    const removeListItem = (e, anime) => {
+        dispatch({
+           type:REMOVE_LIST_ITEM,
+           payload:anime
+        })
+    }
+
+    const getListStorage = () => {
         const storage = localStorage.getItem('state')
+        // console.log('watch state get', storage)
         const storagePayload = storage ? JSON.parse(storage) : initialState
         dispatch({
           type: GET_STORAGE,
@@ -31,13 +40,15 @@ const WatchListState = props => {
     
     useEffect(() => {
         localStorage.setItem("state", JSON.stringify(state))
+        // console.log('watch state set', state)
     })
 
     return <WatchListContext.Provider
         value={{
             watchList: state.watchList,
             addListItem,
-            getStorage
+            removeListItem,
+            getListStorage
         }}
     >
         {props.children}

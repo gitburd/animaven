@@ -43,10 +43,11 @@ const Search = () => {
                     className="btn btn-dark"
                     onClick={onSubmit}
 
-                >Search</a>
+                >
+                    Search
+                </a>
             </div>             
         </div>
-        // </div>
     )
 }
 

@@ -6,6 +6,7 @@ export const GET_GENRE_ANIMES = 'GET_GENRE_ANIMES';
 export const SET_LOADING = 'SET_LOADING';
 export const ADD_LIST_ITEM = 'ADD_LIST_ITEM';
 export const GET_STORAGE = 'GET_STORAGE';
+export const REMOVE_LIST_ITEM = 'REMOVE_LIST_ITEM';
 
 
 

@@ -7,15 +7,16 @@ import WatchListContext from '../../context/watchList/watchListContext'
 
 const Anime = ({match}) => {
     const kitsuContext = useContext(KitsuContext)
-    const { anime, loading, genres, getAnime, getGenreAnimes, getGenres} = kitsuContext
-    const { attributes, id } = anime 
+    const { anime, loading, genres, getAnime, getGenreAnimes, getGenres, getStorage} = kitsuContext
 
     const watchListContext = useContext(WatchListContext)
-    const {addListItem} = watchListContext
+    const {addListItem, getListStorage}= watchListContext
 
     useEffect(( )=> {
         getAnime(match.params.id)
-        // getGenres(match.params.id)
+        getStorage()
+        getListStorage()
+        getGenres(match.params.id)
         //eslint-disable-next-line  
     }, [])
 
@@ -23,14 +24,14 @@ const Anime = ({match}) => {
         e.preventDefault()
         getGenreAnimes(genre,0)
     }
-    const addToList = (e,  id, title) => {
-        const anime ={
-            id,
-            title
-        }
-        addListItem(e, anime)
-    }
 
+    const addToList = (e, anime) => {
+        const newAnime = { 
+            id: anime.id,
+            title: anime.attributes.canonicalTitle
+        }
+        addListItem(e, newAnime)
+    }
     
     if(loading) return <Spinner/>
     return (
@@ -39,29 +40,28 @@ const Anime = ({match}) => {
                 <Link to='/' className='btn btn-dark'>
                     Back To Search
                 </Link>
-                <button onClick = {(e)=>addToList(e, id, attributes.canonicalTitle)}>Add to watch List </button>
+                <button onClick = {(e)=>addToList(e, anime)}>Add to watch List </button>
                 <div className='shadow card '>
                     <div className='all-center'>
-                        {
-                            attributes &&
+                        {   anime && anime.attributes &&
                             <img
-                                src={attributes.posterImage.large}
-                                alt={attributes.canonicalTitle}
+                                src={anime.attributes.posterImage.large}
+                                alt={anime.attributes.canonicalTitle}
                                 style={{ width: '250px' }}
                                 />
                         }
                         
-                        <h1>{attributes && attributes.canonicalTitle}</h1>                   
+                        <h1>{anime && anime.attributes && anime.attributes.canonicalTitle}</h1>                   
                     </div>
                     <div>
                         <h2 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Synopsis</h2>
-                        <p>{attributes && attributes.synopsis }</p>
+                        <p>{anime && anime.attributes && anime.attributes.synopsis }</p>
                         <ul>
                             <li>
-                            {attributes && (
-                                attributes.nextRelease !== null ?
+                            {anime && anime.attributes && (
+                                anime.attributes.nextRelease !== null ?
                                 <Fragment>
-                                <strong>Upcoming release: </strong> {attributes.nextRelease}
+                                <strong>Upcoming release: </strong> {anime.attributes.nextRelease}
                                 </Fragment>
                                 :
                                 <></>
@@ -69,9 +69,9 @@ const Anime = ({match}) => {
                             </li>
 
                             <li>
-                            {attributes  && (
+                            {anime && anime.attributes  && (
                                 <Fragment>
-                                <strong>Finished: </strong> {attributes.status === 'finished' ? (
+                                <strong>Finished: </strong> {anime.attributes.status === 'finished' ? (
                                     <i className='fas fa-check text-success' />
                                     ) : (
                                     <i className='fas fa-times-circle text-danger' />
@@ -81,33 +81,33 @@ const Anime = ({match}) => {
                             </li>
 
                             <li>
-                            {attributes  && (
+                            {anime && anime.attributes  && (
                                 <Fragment>
-                                <strong>Show Type: </strong> {attributes.showType}
+                                <strong>Show Type: </strong> {anime.attributes.showType}
                                 </Fragment>
                             )}
                             </li>
 
                             <li>
-                            {attributes  && (
+                            {anime && anime.attributes  && (
                                 <Fragment>
-                                <strong>Episode Count: </strong> {attributes.episodeCount}
+                                <strong>Episode Count: </strong> {anime.attributes.episodeCount}
                                 </Fragment>
                             )}
                             </li>
 
                             <li>
-                            {attributes  && (
+                            {anime && anime.attributes  && (
                                 <Fragment>
-                                <strong>Age Rating Guide: </strong> {attributes.ageRatingGuide}
+                                <strong>Age Rating Guide: </strong> {anime.attributes.ageRatingGuide}
                                 </Fragment>
                             )}
                             </li>
 
                             <li>
-                            {attributes  && (
+                            {anime && anime.attributes  && (
                                 <Fragment>
-                                <strong>Work Safe: </strong> {attributes.nsfw === false ? (
+                                <strong>Work Safe: </strong> {anime.attributes.nsfw === false ? (
                                     <i className='fas fa-check text-success' />
                                     ) : (
                                     <i className='fas fa-times-circle text-danger' />
@@ -119,14 +119,14 @@ const Anime = ({match}) => {
                     </div>
                 </div>
                 <div className='shadow card text-center'>
-                    <div className='badge badge-danger'>Favorites: {attributes  && attributes.favoritesCount }</div>
-                    <div className='badge badge-success'>Popularity Rank: {attributes  && attributes.popularityRank }</div>
-                    <div className='badge badge-dark'>Average Rating: {attributes  && attributes.averageRating }</div>      
+                    <div className='badge badge-danger'>Favorites: {anime && anime.attributes  && anime.attributes.favoritesCount }</div>
+                    <div className='badge badge-success'>Popularity Rank: {anime && anime.attributes  && anime.attributes.popularityRank }</div>
+                    <div className='badge badge-dark'>Average Rating: {anime && anime.attributes  && anime.attributes.averageRating }</div>      
                 </div> 
 
                 <div style={{float:'left', display:'block', margin:'40px'}}>
                     {genres && genres.map(gen=>(
-                    <h3 key={gen} className='btn btn-dark btn-sm my-1' onClick={(e)=>getAnimes(e,gen)}>{gen}</h3> 
+                    <h3 key={gen.id} className='btn btn-dark btn-sm my-1' onClick={(e)=>getAnimes(e,gen)}>{gen.attributes.name}</h3> 
                     ))}
                 </div>
             </div>

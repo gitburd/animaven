@@ -1,6 +1,7 @@
 import {
     ADD_LIST_ITEM,
-    GET_STORAGE
+    GET_STORAGE,
+    REMOVE_LIST_ITEM
 }from '../types'
 
 export default (state, action) => {
@@ -16,6 +17,13 @@ export default (state, action) => {
                     ...state,
                     watchList: [...state.watchList, action.payload]
                 }
+            }
+        case REMOVE_LIST_ITEM:
+            return{
+                ...state,
+                watchList: state.watchList.filter((anime)=> {
+                    return anime.id !== action.payload
+                })
             }
         case GET_STORAGE:
             return{

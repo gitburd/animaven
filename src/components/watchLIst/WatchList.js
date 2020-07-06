@@ -4,13 +4,17 @@ import WatchListContext from '../../context/watchList/watchListContext'
 
 const WatchList = () => {
     const watchListContext = useContext(WatchListContext)
-    const {watchList, getStorage} = watchListContext
+    const {watchList, removeListItem, getListStorage} = watchListContext
 
     useEffect(() => {
+        getListStorage()
         // eslint-disable-next-line
-        getStorage()
     }, []);
 
+    const removeFromList = (e, id) => {
+        removeListItem(e,id)
+    }
+    
     return (
         <div>
             <div className="text-dark-back p-1">
@@ -29,7 +33,15 @@ const WatchList = () => {
                         { watchList.map((item, idx) => (
                             <div key={idx}>
                                  <Link to={`/anime/${item.id}`}>
-                                    <li> {item.title} </li>
+                                    <li> 
+                                       <span className='listItem'>{item.title}</span> 
+                                        <i 
+                                            onClick = {(e)=>removeFromList(e,item.id)}
+                                            className="far fa-times-circle"
+                                            style={{color:'#27034a', paddingLeft:'10px'}}
+                                        >
+                                        </i>
+                                    </li>
                                  </Link>
                             </div>
                         ))}
