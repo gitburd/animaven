@@ -318,54 +318,34 @@ textarea {
   color: #666;
 }
 
-/* Mobile Styles */
-@media (max-width: 700px) {
-  .hide-sm {
-    display: none;
+/*media queries */
+@media (max-width: 1130px) {
+  .anime-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    color:rgba(27, 24, 38, 1);
   }
+}
 
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
-
-  /* Text Styles */
-
-  .large {
-    font-size: 2rem;
-  }
-
-  .lead {
-    font-size: 1rem;
-  }
-
-  /* Navbar */
-  .navbar {
-    display: block;
-    text-align: center;
-  }
-
-  .navbar ul {
-    text-align: center;
-    justify-content: center;
-  }
-
-  #genres{
-    clear:both;
-    padding:10px;
-    margin:20px;
-    /* background-color:hsla(0, 100%, 100%, 0.7); */
-  }
-
+@media (max-width: 930px) {
   .anime-grid{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: 1.5rem;
+    grid-gap: .7rem;
     color:rgba(27, 24, 38, 1);
   }
-
   .genre-grid{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1.25rem;
+    grid-gap: .7rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .genre-grid{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: .7rem;
   }
 }
