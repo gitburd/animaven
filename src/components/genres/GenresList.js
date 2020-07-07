@@ -10,7 +10,7 @@ const GenresList = () => {
     const [genresPerPage, setGenresPerPage] = useState(12);
     const indexOfLastGenre = currentPage * genresPerPage;
     const indexOfFirstGenre = indexOfLastGenre - genresPerPage;
-    const currentGenres = genresList ? genresList.slice(indexOfFirstGenre,indexOfLastGenre) : []
+    const currentGenres = genresList ? genresList.slice(indexOfFirstGenre,indexOfLastGenre) : genresList[0]
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
 
@@ -18,6 +18,7 @@ const GenresList = () => {
         e.preventDefault()
         getGenreAnimes(g,0)
     }
+
     return (
         <div>
             <div className="light-container">

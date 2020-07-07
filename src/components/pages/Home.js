@@ -12,7 +12,7 @@ import WatchList from '../watchList/WatchList'
     const {animes, genreAnimes, getStorage, searchAnimes, search, genre, getGenreAnimes} = kitsuContext
       
     const watchListContext = useContext(WatchListContext)
-    const { getListStorage } = watchListContext
+    const { getListStorage, watchList } = watchListContext
     
     useEffect(() => {
       getStorage()
@@ -33,9 +33,11 @@ import WatchList from '../watchList/WatchList'
                     <Animes/>
                     <GenresList/>
             </div>
-            <div className="right">
-                <WatchList/>    
-            </div>
+            {(search || genre || watchList) && (
+                <div className="right">
+                    <WatchList/>    
+                </div>
+            )}
         </div>
     )
 }

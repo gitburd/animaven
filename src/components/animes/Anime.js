@@ -26,9 +26,15 @@ const Anime = ({match}) => {
     }
 
     const addToList = (e, anime) => {
+        let title = anime.attributes.canonicalTitle
+
+        if(anime.attributes.titles.en && anime.attributes.titles.en !== anime.attributes.canonicalTitle && anime.attributes.titles.en !== ''){
+            title += ` (${anime.attributes.titles.en})`
+        }
+       
         const newAnime = { 
             id: anime.id,
-            title: anime.attributes.canonicalTitle
+            title: title
         }
         addListItem(e, newAnime)
     }
@@ -53,10 +59,14 @@ const Anime = ({match}) => {
                                 src={anime.attributes.posterImage.large}
                                 alt={anime.attributes.canonicalTitle}
                                 style={{ width: '250px' }}
-                                />
+                            />
                         }
                         
-                        <h1>{anime && anime.attributes && anime.attributes.canonicalTitle}</h1>                   
+                        <h1>{anime && anime.attributes && anime.attributes.canonicalTitle}</h1>      
+                        {
+                            anime && anime.attributes && anime.attributes.titles && anime.attributes.titles.en != anime.attributes.canonicalTitle &&
+                                <h2> {anime.attributes.titles.en} </h2>
+                        }             
                     </div>
                     <div>
                         <h2 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Synopsis</h2>
@@ -131,7 +141,7 @@ const Anime = ({match}) => {
 
                 <div style={{float:'left', display:'block', margin:'40px'}}>
                     {genres && genres.map(gen=>(
-                    <h3 key={gen.id} className='btn btn-dark btn-sm my-1' onClick={(e)=>getAnimes(e,gen)}>{gen.attributes.name}</h3> 
+                    <h3 key={gen.id}  style={{margin:'10px'}}className='btn btn-dark btn-sm my-1' onClick={(e)=>getAnimes(e,gen)}>{gen.attributes.name}</h3> 
                     ))}
                 </div>
             </div>

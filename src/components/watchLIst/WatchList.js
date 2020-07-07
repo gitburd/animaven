@@ -1,7 +1,6 @@
 import React, {useContext, useEffect} from 'react'
 import {Link} from "react-router-dom"
 import WatchListContext from '../../context/watchList/watchListContext'
-import PrintBtn from './PrintBtn'
 
 const WatchList = () => {
     const watchListContext = useContext(WatchListContext)
@@ -17,41 +16,38 @@ const WatchList = () => {
     }
     
     return (
-        <div>
-            <div className="text-dark-back" sytle={{margin:'0'}}>
-                <PrintBtn id={"watchList"} label={"Save as PDF"} />
-            </div>
-            <div id="watchList" style={{width:"100%"}}>
-                <div className="text-dark-back p-1">
-                    <h1>Watch List</h1>
-                </div>
-                <div className="light-container">
-                    {!watchList || (watchList && watchList.length === 0) && (
-                        <>
-                            <p>Nohting yet!</p>
-                            <p> Start searching to find stuff</p>
-                        </>
-                    )}
-                    {watchList && watchList.length > 0 && 
-                        <ul>
-                            { watchList.map((item, idx) => (
-                                <div key={idx}>
-                                    <Link to={`/anime/${item.id}`}>
-                                        <li> 
+        <div>            
+            <a href='/print'>
+                <button style={{float:'right', marginRight:'0'}} className='btn btn-light'>Save as PDF</button>
+            </a>
+            
+            <div  
+                id="watchList" style={{ clear:'both', width:'100%'}}
+            >
+                <h1 className="text-dark-back p-1"> Watch List</h1>
+                {!watchList || (watchList && watchList.length === 0) && (
+                    <div className="light-container">
+                        <p>Nohting yet!</p>
+                        <p> Start searching to find stuff</p>
+                    </div>
+                )}
+                {watchList && watchList.length > 0 && 
+                    <ul className="light-container">
+                        { watchList.map((item, idx) => (
+                            <div key={idx} >
+                                <i 
+                                    onClick = {(e)=>removeFromList(e,item.id)}
+                                    className="far fa-times-circle cancelIcon"
+                                ></i>
+                                <a href={`/anime/${item.id}`}>
+                                    <li style={{color:'red'}} > 
                                         <span className='listItem'>{item.title}</span> 
-                                            <i 
-                                                onClick = {(e)=>removeFromList(e,item.id)}
-                                                className="far fa-times-circle"
-                                                style={{color:'#27034a', paddingLeft:'10px'}}
-                                            >
-                                            </i>
-                                        </li>
-                                    </Link>
-                                </div>
-                            ))}
-                        </ul>
-                    }
-                </div>
+                                    </li>
+                                </a>
+                            </div>
+                        ))}
+                    </ul>
+                }
             </div>
         </div>
     )

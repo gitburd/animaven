@@ -12,12 +12,9 @@ const AnimeItem = ({ anime: { attributes, id }}) => {
           />
           <h3> {attributes.canonicalTitle} </h3>
           {
-            attributes.titles.en != attributes.canonicalTitle 
-            ? <h3> {attributes.titles.en} </h3>
-            : ""
-          }
-         
-          
+            attributes && attributes.titles && attributes.titles.en != attributes.canonicalTitle &&
+              <h3> {attributes.titles.en} </h3>
+          }    
           <div>
             <Link to={`/anime/${id}`} className='btn btn-dark btn-sm my-1'>
               More
