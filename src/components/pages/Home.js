@@ -23,21 +23,21 @@ import WatchList from '../watchList/WatchList'
       // eslint-disable-next-line
     }, []);
 
+    const showAbout = !watchList && (!animes || animes.length === 0) && (!genreAnimes || genreAnimes.length === 0)
     return (
         <div className="wrapper">
             <div className="left bkg-light">
-                {(!animes || animes.length === 0) && (!genreAnimes || genreAnimes.length === 0) && (
-                    <About/>
-                )}
-                    <Search/>
-                    <Animes/>
-                    <GenresList/>
+                <Search/>
+                <Animes/>
+                <GenresList/>
             </div>
-            {(search || genre || watchList) && (
-                <div className="right">
-                    <WatchList/>    
-                </div>
-            )}
+            
+            <div className="right">
+                {   showAbout ? 
+                          <About/>
+                        : <WatchList/>    
+                }
+            </div>
         </div>
     )
 }

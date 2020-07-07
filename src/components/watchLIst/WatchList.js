@@ -27,8 +27,8 @@ const WatchList = () => {
                 <h1 className="text-dark-back p-1"> Watch List</h1>
                 {!watchList || (watchList && watchList.length === 0) && (
                     <div className="light-container">
-                        <p>Nohting yet!</p>
-                        <p> Start searching to find stuff</p>
+                        <p>Your list is empty.</p>
+                        <p> Start searching to find animes!</p>
                     </div>
                 )}
                 {watchList && watchList.length > 0 && 
