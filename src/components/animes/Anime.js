@@ -52,109 +52,101 @@ const Anime = ({match}) => {
                 >
                     Add to watch List 
                 </button>
-                <div className='shadow card '>
-                    <div className='all-center'>
-                        {   anime && anime.attributes &&
-                            <img
-                                src={anime.attributes.posterImage.large}
-                                alt={anime.attributes.canonicalTitle}
-                                style={{ width: '250px' }}
-                            />
-                        }
-                        
-                        <h1>{anime && anime.attributes && anime.attributes.canonicalTitle}</h1>      
-                        {
-                            anime && anime.attributes && anime.attributes.titles && anime.attributes.titles.en != anime.attributes.canonicalTitle &&
-                                <h2> {anime.attributes.titles.en} </h2>
-                        }             
-                    </div>
-                    <div>
-                        <h2 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Synopsis</h2>
-                        <p>{anime && anime.attributes && anime.attributes.synopsis }</p>
-                        <ul>
-                            <li>
-                            {anime && anime.attributes && (
-                                anime.attributes.nextRelease !== null ?
-                                <Fragment>
-                                <strong>Upcoming release: </strong> {anime.attributes.nextRelease}
-                                </Fragment>
-                                :
-                                <></>
-                            )}
-                            </li>
-
-                            <li>
-                            {anime && anime.attributes  && (
-                                <Fragment>
-                                <strong>Finished: </strong> {anime.attributes.status === 'finished' ? (
-                                    <i className='fas fa-check text-success' />
-                                    ) : (
-                                    <i className='fas fa-times-circle text-danger' />
+                <div className='bkg-light'>
+                    <div className='shadow card'>
+                        <div className='all-center'>
+                            {   anime && anime.attributes &&
+                                <img
+                                    src={anime.attributes.posterImage.large}
+                                    alt={anime.attributes.canonicalTitle}
+                                    style={{ width: '250px' }}
+                                />
+                            }
+                            
+                            <h1>{anime && anime.attributes && anime.attributes.canonicalTitle}</h1>      
+                            {
+                                anime && anime.attributes && anime.attributes.titles && anime.attributes.titles.en != anime.attributes.canonicalTitle &&
+                                    <h2> {anime.attributes.titles.en} </h2>
+                            }             
+                        </div>
+                        <div>
+                            <h2 className='bold-header-text text-dark' style={{textDecoration:'underline'}}>Synopsis</h2>
+                            <p>{anime && anime.attributes && anime.attributes.synopsis }</p>
+                            <ul>
+                                <li>
+                                {anime && anime.attributes && (
+                                    anime.attributes.nextRelease !== null ?
+                                    <Fragment>
+                                    <strong>Upcoming release: </strong> {anime.attributes.nextRelease}
+                                    </Fragment>
+                                    :
+                                    <></>
                                 )}
-                                </Fragment>
-                            )}
-                            </li>
-
-                            <li>
-                            {anime && anime.attributes  && (
-                                <Fragment>
-                                <strong>Show Type: </strong> {anime.attributes.showType}
-                                </Fragment>
-                            )}
-                            </li>
-
-                            <li>
-                            {anime && anime.attributes  && (
-                                <Fragment>
-                                <strong>Episode Count: </strong> {anime.attributes.episodeCount}
-                                </Fragment>
-                            )}
-                            </li>
-
-                            <li>
-                            {anime && anime.attributes  && (
-                                <Fragment>
-                                <strong>Age Rating Guide: </strong> {anime.attributes.ageRatingGuide}
-                                </Fragment>
-                            )}
-                            </li>
-
-                            <li>
-                            {anime && anime.attributes  && (
-                                <Fragment>
-                                <strong>Work Safe: </strong> {anime.attributes.nsfw === false ? (
-                                    <i className='fas fa-check text-success' />
-                                    ) : (
-                                    <i className='fas fa-times-circle text-danger' />
+                                </li>
+                                <li>
+                                {anime && anime.attributes  && (
+                                    <Fragment>
+                                    <strong>Finished: </strong> {anime.attributes.status === 'finished' ? (
+                                        <i className='fas fa-check text-success' />
+                                        ) : (
+                                        <i className='fas fa-times-circle text-danger' />
+                                    )}
+                                    </Fragment>
                                 )}
-                                </Fragment>
-                            )}
-                            </li>
-                        </ul>
+                                </li>
+                                <li>
+                                {anime && anime.attributes  && (
+                                    <Fragment>
+                                    <strong>Show Type: </strong> {anime.attributes.showType}
+                                    </Fragment>
+                                )}
+                                </li>
+                                <li>
+                                {anime && anime.attributes  && (
+                                    <Fragment>
+                                    <strong>Episode Count: </strong> {anime.attributes.episodeCount}
+                                    </Fragment>
+                                )}
+                                </li>
+                                <li>
+                                {anime && anime.attributes  && (
+                                    <Fragment>
+                                    <strong>Age Rating Guide: </strong> {anime.attributes.ageRatingGuide}
+                                    </Fragment>
+                                )}
+                                </li>
+                                <li>
+                                {anime && anime.attributes  && (
+                                    <Fragment>
+                                    <strong>Work Safe: </strong> {anime.attributes.nsfw === false ? (
+                                        <i className='fas fa-check text-success' />
+                                        ) : (
+                                        <i className='fas fa-times-circle text-danger' />
+                                    )}
+                                    </Fragment>
+                                )}
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div className='shadow card text-center'>
-                    <div className='badge badge-danger'>Favorites: {anime && anime.attributes  && anime.attributes.favoritesCount }</div>
-                    <div className='badge badge-success'>Popularity Rank: {anime && anime.attributes  && anime.attributes.popularityRank }</div>
-                    <div className='badge badge-dark'>Average Rating: {anime && anime.attributes  && anime.attributes.averageRating }</div>      
-                </div> 
+                    <div className='shadow card text-center' style={{margin:'20px 0'}}>
+                        <div className='badge badge-danger'>Favorites: {anime && anime.attributes  && anime.attributes.favoritesCount }</div>
+                        <div className='badge badge-success'>Popularity Rank: {anime && anime.attributes  && anime.attributes.popularityRank }</div>
+                        <div className='badge badge-dark'>Average Rating: {anime && anime.attributes  && anime.attributes.averageRating }</div>      
+                    </div> 
 
-                <div style={{float:'left', display:'block', margin:'40px'}}>
-                    {genres && genres.map(gen=>(
-                        <h3   
-                            key={gen.id}
-                            style={{margin:'10px'}}
-                            className='btn btn-dark btn-sm my-1'
-                            onClick={(e)=>getAnimes(e, gen.attributes.name)} 
-                        >
-                            <Link to="/">
-                                
-                                {gen.attributes.name}    
-                                
-                            </Link>   
-                        </h3>                                
-                    ))} 
-                    
+                    <div >
+                        {genres && genres.map(gen=>(
+                            <h3   
+                                key={gen.id}
+                                style={{margin:'10px'}}
+                                className='btn btn-dark btn-sm my-1'
+                                onClick={(e)=>getAnimes(e, gen.attributes.name)} 
+                            >
+                                <Link to="/">{gen.attributes.name}</Link>   
+                            </h3>                                
+                        ))} 
+                    </div>
                 </div>
             </div>
             <div className="right">

@@ -25,7 +25,7 @@ import WatchList from '../watchList/WatchList'
 
     return (
         <div className="wrapper">
-            <div className="left">
+            <div className="left bkg-light">
                 {(!animes || animes.length === 0) && (!genreAnimes || genreAnimes.length === 0) && (
                     <About/>
                 )}
