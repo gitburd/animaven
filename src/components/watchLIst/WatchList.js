@@ -17,9 +17,9 @@ const WatchList = () => {
     
     return (
         <div>            
-            <a href='/print'>
+            {/* <a href='/print'>
                 <button style={{float:'right', marginRight:'0'}} className='btn btn-light'>Save as PDF</button>
-            </a>
+            </a> */}
             
             <div  
                 id="watchList" style={{ clear:'both', width:'100%'}}
