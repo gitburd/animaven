@@ -4,11 +4,13 @@ import KitsuReducer from './kitsuReducer'
 import {
     SEARCH_ANIMES,
     SET_LOADING,
+    CLEAR_LOADING,
     CLEAR_ANIMES,
     GET_ANIME,
     GET_GENRES,
     GET_GENRE_ANIMES,
-    GET_STORAGE
+    GET_STORAGE,
+    SET_GENRE
 }from '../types'
 
 const KitsuState = props => {
@@ -97,6 +99,22 @@ const KitsuState = props => {
     const clearAnimes = () => dispatch({type: CLEAR_ANIMES})
     
     const setLoading = () => dispatch({ type: SET_LOADING })
+    
+    const clearLoading = () => dispatch({ type: CLEAR_LOADING })
+
+    const setGenre = (genre) => {
+       
+        dispatch({
+          type: SET_GENRE,
+          payload: genre
+        });
+      }
+    
+    useEffect(() => {
+        localStorage.setItem("state", JSON.stringify(state))
+        // console.log('kit state set', state)
+    })
+
 
     const getStorage = () => {
         const storage = localStorage.getItem('state')
@@ -133,7 +151,9 @@ const KitsuState = props => {
             getAnime,
             getGenres,
             getGenreAnimes,
-            getStorage
+            getStorage,
+            setGenre
+
         }}
     >
         {props.children}

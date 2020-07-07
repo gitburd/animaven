@@ -29,7 +29,7 @@ body {
   font-weight: bold;
 }
 a {
-  color: var(--danger-color);
+  color: #EAE6F4;
   text-decoration: none;
 }
 ul {
@@ -137,7 +137,6 @@ ul {
 .btn {
   display: inline-block;
   background: var(--light-color);
-  color: #333;
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
   border: none;
@@ -168,7 +167,7 @@ ul {
 .btn-dark,
 .badge-dark {
   background: var(--dark-color);
-  color: #fff;
+  color: #EAE6F4;
 }
 .badge-danger {
   background: var(--danger-color);
@@ -243,6 +242,7 @@ textarea {
 .my-1{
   width:150px;
   font-size: 15px;
+  color: #EAE6F4;
 }
 
 .anime-pagination{

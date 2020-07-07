@@ -1,11 +1,13 @@
 import {
     SEARCH_ANIMES,
     SET_LOADING,
+    CLEAR_LOADING,
     CLEAR_ANIMES,
     GET_ANIME,
     GET_GENRES,
     GET_GENRE_ANIMES,
-    GET_STORAGE
+    GET_STORAGE,
+    SET_GENRE
 }from '../types'
 
 export default (state, action) => {
@@ -58,12 +60,24 @@ export default (state, action) => {
             animes:[],
             dataCount:action.dataCount,
             loading:false
-        }     
+        }    
+        case SET_GENRE:
+        return{
+            ...state,
+            genre:action.payload,
+            search:null,
+            animes:[]
+        }    
         case SET_LOADING:
             return{
                 ...state, 
                 loading: true
             }
+        case CLEAR_LOADING:
+            return{
+                ...state, 
+                loading: false
+            }    
         case GET_STORAGE:
             return{
                 ...action.payload

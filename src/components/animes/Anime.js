@@ -7,7 +7,7 @@ import WatchListContext from '../../context/watchList/watchListContext'
 
 const Anime = ({match}) => {
     const kitsuContext = useContext(KitsuContext)
-    const { anime, loading, genres, getAnime, getGenreAnimes, getGenres, getStorage} = kitsuContext
+    const { anime, loading, genres, getAnime, getGenreAnimes, getGenres,  setGenre, getStorage} = kitsuContext
 
     const watchListContext = useContext(WatchListContext)
     const {addListItem, getListStorage}= watchListContext
@@ -16,13 +16,13 @@ const Anime = ({match}) => {
         getAnime(match.params.id)
         getStorage()
         getListStorage()
-        getGenres(match.params.id)
         //eslint-disable-next-line  
     }, [])
 
     const getAnimes = (e,genre) => {
         e.preventDefault()
-        getGenreAnimes(genre,0)
+        console.log('an',genre)
+        setGenre(genre)
     }
 
     const addToList = (e, anime) => {
@@ -141,8 +141,26 @@ const Anime = ({match}) => {
 
                 <div style={{float:'left', display:'block', margin:'40px'}}>
                     {genres && genres.map(gen=>(
-                    <h3 key={gen.id}  style={{margin:'10px'}}className='btn btn-dark btn-sm my-1' onClick={(e)=>getAnimes(e,gen)}>{gen.attributes.name}</h3> 
-                    ))}
+                            <h3   
+                                key={gen.id}
+                                style={{margin:'10px'}}
+                                className='btn btn-dark btn-sm my-1'
+                                onClick={(e)=>getAnimes(e, gen.attributes.name)} 
+                            >
+                                <Link to="/">
+                                    
+                                    {gen.attributes.name}    
+                                    
+                                </Link>   
+                            </h3>                                
+                                
+                           
+                            ))}
+
+
+                       
+                           
+                    
                 </div>
             </div>
             <div className="right">

@@ -24,7 +24,7 @@ const Animes = () => {
         setCurrentPage(1);
     }, []);
 
-    if(loading){
+    if(loading && (search || genre)){
         return<Spinner/>
     } else {
         return (

@@ -17,7 +17,7 @@ const PrintTemplate = () => {
                 <a 
                     className='bold-header-text'
                     style={{color:'#EAE6F4', textDecoration:'underline'}}
-                    href='https://animaven.netlify.app/'>
+                    href='/'>
                     <h1>Animaven</h1>
                 </a>
                 
@@ -28,7 +28,7 @@ const PrintTemplate = () => {
                     <ul>
                         { watchList.map((item, idx) => (
                             <div key={idx}>
-                                <a href={`https://animaven.netlify.app/anime/${item.id}`}>
+                                <a href={`/anime/${item.id}`}>
                                     <li> 
                                         <span className='listItem'>{item.title}</span> 
                                     </li>
