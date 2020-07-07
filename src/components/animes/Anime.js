@@ -7,7 +7,7 @@ import WatchListContext from '../../context/watchList/watchListContext'
 
 const Anime = ({match}) => {
     const kitsuContext = useContext(KitsuContext)
-    const { anime, loading, genres, getAnime, getGenreAnimes, getGenres,  setGenre, getStorage} = kitsuContext
+    const { anime, loading, genres, getAnime, setGenre, getStorage} = kitsuContext
 
     const watchListContext = useContext(WatchListContext)
     const {addListItem, getListStorage}= watchListContext
@@ -22,6 +22,7 @@ const Anime = ({match}) => {
     const setGen = (e,genre) => {
         e.preventDefault()
         setGenre(genre)
+        // history.push('/')
     }
 
     const addToList = (e, anime) => {
@@ -131,18 +132,19 @@ const Anime = ({match}) => {
                         <div className='badge badge-danger'>Favorites: {anime && anime.attributes  && anime.attributes.favoritesCount }</div>
                         <div className='badge badge-success'>Popularity Rank: {anime && anime.attributes  && anime.attributes.popularityRank }</div>
                         <div className='badge badge-dark'>Average Rating: {anime && anime.attributes  && anime.attributes.averageRating }</div>      
-                    </div> 
-
+                    </div>
                     <div >
                         {genres && genres.map(gen=>(
-                            <h3   
+                            <span
                                 key={gen.id}
                                 style={{margin:'10px'}}
                                 className='btn btn-dark btn-sm my-1'
-                                onClick={(e)=>setGen(e, gen.attributes.name)} 
+                                onClick={(e)=>setGen(e, gen.attributes.name)}
                             >
-                                <Link to="/">{gen.attributes.name}</Link>   
-                            </h3>                                
+                                <Link to='/'>
+                                    <h4 >{gen.attributes.name}</h4>
+                                </Link>
+                            </span>                  
                         ))} 
                     </div>
                 </div>

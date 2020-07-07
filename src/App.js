@@ -7,13 +7,14 @@ import NotFound from './components/pages/NotFound'
 import Anime from './components/animes/Anime'
 import KitsuState from './context/kitsu/KitsuState'
 import WatchListState from './context/watchList/WatchListState'
+import history from './history'
 import './App.css'
 
 function App() {
   return (
     <KitsuState>
       <WatchListState>
-        <Router>
+        <Router history={history}>
           <Navbar/>
           <div className="App" >
             <Switch>
