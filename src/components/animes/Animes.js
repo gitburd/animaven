@@ -47,7 +47,7 @@ const Animes = () => {
                             search={search}
                             genre={genre}
                             />
-                            <div className='anime-grid' style={{margin:'20px 40px', clear:'both'}}>
+                            <div className='anime-grid' style={{ padding:'20px', margin:'0 auto', clear:'both'}}>
                                 {displayAnimes.map(anime => (
                                 <AnimeItem
                                     key={anime.id}

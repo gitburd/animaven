@@ -262,9 +262,7 @@ textarea {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: .7rem;
-  /* max-width: 90%; */
   margin:auto;
-  
 }
 .search-btn{
   float: right;
@@ -285,7 +283,7 @@ textarea {
   grid-column: 1/3;
   grid-row: 1;
   margin:0 15px 0 30px;
-  position: relative;
+  /* position: relative; */
 }
 .right{
   grid-column: 3;
@@ -349,10 +347,15 @@ textarea {
     grid-gap: .7rem;
     color:rgba(27, 24, 38, 1);
   }
-  .genre-grid{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: .7rem;
+  .left{
+    grid-column: 1/4;
+    grid-row: 2;
+    margin:0 30px;
+  }
+  .right{
+    grid-column: 1/4;
+    grid-row: 1;
+    margin:0 30px;
   }
 }
 
@@ -361,17 +364,6 @@ textarea {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: .7rem;
-  }
-  .left{
-    grid-column: 1/4;
-    grid-row: 2;
-    background-color:hsla(274, 94%, 94%, 0.3);
-    margin:0 30px;
-  }
-  .right{
-    grid-column: 1/4;
-    grid-row: 1;
-    margin:0 30px;
   }
   .genre-grid{
     display: grid;

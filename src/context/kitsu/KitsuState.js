@@ -52,6 +52,7 @@ const KitsuState = props => {
     
     const getAnime = (id) => {
         setLoading();
+        getGenres(id)
         let proxyUrl = "https://afternoon-castle-81655.herokuapp.com/"
         let targetUrl = `https://kitsu.io/api/edge/anime/${id}`
         
