@@ -152,7 +152,8 @@ const KitsuState = props => {
             getGenres,
             getGenreAnimes,
             getStorage,
-            setGenre
+            setGenre,
+            clearLoading
 
         }}
     >

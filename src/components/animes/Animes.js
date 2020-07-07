@@ -6,7 +6,7 @@ import AnimesPagination from './AnimesPagination'
 
 const Animes = () => {
     const kitsuContext = useContext(KitsuContext)
-    const {animes, loading, search, genre, searchAnimes, getGenreAnimes, genreAnimes, resultsError} = kitsuContext
+    const {animes, loading, search, genre, searchAnimes, getGenreAnimes, genreAnimes, resultsError, clearLoading} = kitsuContext
     const [currentPage, setCurrentPage] = useState(1)
     const paginate = (pageNumber) =>  {
         setCurrentPage(pageNumber)
@@ -22,6 +22,9 @@ const Animes = () => {
 
     useEffect(() => {
         setCurrentPage(1);
+        if(!search && !genre){
+            clearLoading()
+        }
     }, []);
 
     if(loading && (search || genre)){

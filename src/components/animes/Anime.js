@@ -141,25 +141,19 @@ const Anime = ({match}) => {
 
                 <div style={{float:'left', display:'block', margin:'40px'}}>
                     {genres && genres.map(gen=>(
-                            <h3   
-                                key={gen.id}
-                                style={{margin:'10px'}}
-                                className='btn btn-dark btn-sm my-1'
-                                onClick={(e)=>getAnimes(e, gen.attributes.name)} 
-                            >
-                                <Link to="/">
-                                    
-                                    {gen.attributes.name}    
-                                    
-                                </Link>   
-                            </h3>                                
+                        <h3   
+                            key={gen.id}
+                            style={{margin:'10px'}}
+                            className='btn btn-dark btn-sm my-1'
+                            onClick={(e)=>getAnimes(e, gen.attributes.name)} 
+                        >
+                            <Link to="/">
                                 
-                           
-                            ))}
-
-
-                       
-                           
+                                {gen.attributes.name}    
+                                
+                            </Link>   
+                        </h3>                                
+                    ))} 
                     
                 </div>
             </div>

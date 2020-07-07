@@ -17,9 +17,9 @@ const WatchList = () => {
     
     return (
         <div>            
-            {/* <a href='/print'>
+            <Link to='/print'>
                 <button style={{float:'right', marginRight:'0'}} className='btn btn-light'>Save as PDF</button>
-            </a> */}
+            </Link>
             
             <div  
                 id="watchList" style={{ clear:'both', width:'100%'}}
@@ -32,6 +32,7 @@ const WatchList = () => {
                     </div>
                 )}
                 {watchList && watchList.length > 0 && 
+              
                     <ul className="light-container">
                         { watchList.map((item, idx) => (
                             <div key={idx} >
@@ -39,11 +40,11 @@ const WatchList = () => {
                                     onClick = {(e)=>removeFromList(e,item.id)}
                                     className="far fa-times-circle cancelIcon"
                                 ></i>
-                                <a href={`/anime/${item.id}`}>
+                                <Link to={`/anime/${item.id}`}>
                                     <li style={{color:'red'}} > 
                                         <span className='listItem'>{item.title}</span> 
                                     </li>
-                                </a>
+                                </Link>
                             </div>
                         ))}
                     </ul>

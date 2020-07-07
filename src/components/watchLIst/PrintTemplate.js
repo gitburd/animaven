@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react'
 import WatchListContext from '../../context/watchList/watchListContext'
+import {Link} from "react-router-dom"
 
 const PrintTemplate = () => {
     const watchListContext = useContext(WatchListContext)
@@ -14,12 +15,12 @@ const PrintTemplate = () => {
     return (
         <div>
             <div className="text-dark-back p-1">
-                <a 
-                    className='bold-header-text'
-                    style={{color:'#EAE6F4', textDecoration:'underline'}}
-                    href='/'>
-                    <h1>Animaven</h1>
-                </a>
+            <Link to='/' 
+                className='bold-header-text'
+                style={{color:'#EAE6F4', textDecoration:'underline'}}
+            >
+                <h1>Animaven</h1>
+            </Link>
                 
                 <h2>Watch List</h2>
             </div>
@@ -28,11 +29,9 @@ const PrintTemplate = () => {
                     <ul>
                         { watchList.map((item, idx) => (
                             <div key={idx}>
-                                <a href={`/anime/${item.id}`}>
-                                    <li> 
-                                        <span className='listItem'>{item.title}</span> 
-                                    </li>
-                                </a>
+                                <li> 
+                                    <span className='listItem'>{item.title}</span> 
+                                </li>
                             </div>
                         ))}
                     </ul>
