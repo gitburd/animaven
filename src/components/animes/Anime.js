@@ -17,11 +17,10 @@ const Anime = ({match}) => {
         getStorage()
         getListStorage()
         //eslint-disable-next-line  
-    }, [])
+    }, [match.params.id])
 
-    const getAnimes = (e,genre) => {
+    const setGen = (e,genre) => {
         e.preventDefault()
-        console.log('an',genre)
         setGenre(genre)
     }
 
@@ -62,7 +61,6 @@ const Anime = ({match}) => {
                                     style={{ width: '250px' }}
                                 />
                             }
-                            
                             <h1>{anime && anime.attributes && anime.attributes.canonicalTitle}</h1>      
                             {
                                 anime && anime.attributes && anime.attributes.titles && anime.attributes.titles.en != anime.attributes.canonicalTitle &&
@@ -141,7 +139,7 @@ const Anime = ({match}) => {
                                 key={gen.id}
                                 style={{margin:'10px'}}
                                 className='btn btn-dark btn-sm my-1'
-                                onClick={(e)=>getAnimes(e, gen.attributes.name)} 
+                                onClick={(e)=>setGen(e, gen.attributes.name)} 
                             >
                                 <Link to="/">{gen.attributes.name}</Link>   
                             </h3>                                
