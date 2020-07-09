@@ -9,7 +9,9 @@ import {
 
 const WatchListState = props => {
     const initialState = {
-       watchList:[]
+       watchList:[],
+       title:'Watch List',
+       comments:'jjjj '
     }
     
     const [state, dispatch] = useReducer(WatchListReducer, initialState)
@@ -27,7 +29,7 @@ const WatchListState = props => {
            payload:anime
         })
     }
-
+    
     const getListStorage = () => {
         const storage = localStorage.getItem('state')
         // console.log('watch state get', storage)

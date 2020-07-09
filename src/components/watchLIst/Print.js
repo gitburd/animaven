@@ -1,36 +1,39 @@
-import React, { Component } from 'react';
+import React, { useRef, useState } from 'react';
 import { PDFExport } from '@progress/kendo-react-pdf';
 import PrintTemplate from './PrintTemplate';
 
-class Print extends Component {
-    animeList;
+const Print = () => {
+    const [title, setTitle] = useState('Watch List')
+    const [comments, setComments] = useState('')
 
-    state={
-        redirect:false       
+    const animeList = useRef(null);
+    
+
+    const exportPDF = () => {
+        animeList.current.save();
     }
-
-    exportPDF = () => {
-        this.animeList.save();
-        this.setState({redirect:true})
-    }
-
-    render() {
-        return (
-            <div style={{ height: '100vh', width: '100vw', paddingTop: 20}}>
-                <div style={{ textAlign: 'center', marginBottom: 10 }}>
-                    <button 
-                        className='btn btn-light'
-                        onClick={this.exportPDF} 
-                        style={{ margin: 'auto' }}>
-                        download
-                    </button>
-                </div>
-                <PDFExport paperSize={'Letter'}
-                    fileName="animeList.pdf"
-                    title=""
-                    subject=""
-                    keywords=""
-                    ref={(r) => this.animeList = r}>
+  
+    return (
+        <div style={{ height: '100vh', width: '100vw'}}>
+            <button 
+                className='btn btn-light'
+                onClick={exportPDF} 
+                style={{ margin: '0 auto', display:'block' }}>
+                Download
+            </button>
+            <form style={{ textAlign: 'center', margin: '20px auto 0 auto', width:'30%'}}>
+                <label className='label'>Title:</label>
+                <input value={title} type="text" onChange={(e)=>setTitle(e.target.value)} />
+                {/* <label className='label'>Comments:</label>
+                <input value={comments} type="text" onChange={(e)=>setComments(e.target.value)} /> */}
+            </form>
+            <PDFExport 
+                paperSize={'Letter'}
+                fileName="animeList.pdf"
+                title=""
+                subject=""
+                keywords=""
+                ref={animeList}>
                     <div 
                         style={{
                             height: 792,
@@ -43,12 +46,12 @@ class Print extends Component {
                             overflowY: 'hidden'
                         }}
                     >
-                        <PrintTemplate/>
+                        <PrintTemplate title={title} comments={comments}/>
                     </div>
-                </PDFExport>
-            </div>
-        )
-    }
+            </PDFExport>
+        </div>
+   
+    )
 }
 
 export default Print;

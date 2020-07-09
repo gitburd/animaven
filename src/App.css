@@ -211,6 +211,11 @@ textarea {
   z-index: 1;
   width: 100%;
   opacity: 0.9;
+  text-shadow:
+   -0.5px -0.5px 0 #000,  
+    0.5px -0.5px 0 #000,
+    -0.5px 0.5px 0 #000,
+     0.5px 0.5px 0 #000;
 }
 .navbar ul {
   display: flex;
@@ -329,6 +334,24 @@ textarea {
   cursor: pointer;
   color: #666;
 }
+
+.printList{
+  list-style:circle;
+  color: #3D1D5B;
+  font-size: 20px;
+}
+
+.printList li {
+  padding:5px;
+}
+
+.label{
+  background-color: hsla(270, 92%, 15%, 0.95);
+  float:left; 
+  padding:10px 20px;
+  margin:0;
+}
+
 /*media queries */
 
 @media (max-width: 1130px) {
